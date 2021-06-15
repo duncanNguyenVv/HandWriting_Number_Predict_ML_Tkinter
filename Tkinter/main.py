@@ -1,3 +1,4 @@
+import random
 from tkinter import *
 from PIL import ImageTk, Image, ImageDraw, ImageGrab
 import PIL
@@ -15,9 +16,25 @@ def predict():
     # image = PIL.ImageTk.PhotoImage(image)
     image.save('image_for_predict.png')
 
+    # Step 2. Load image,model,predict
+    x = random.randint(0,10)
+    # Step 3. Print
+    deleteText()
+    createText(x)
+
 def btn_clicked():
     print("Button Clicked")
 
+def createText(x):
+    canvas.create_text(
+        709.0, 424.0,
+        text=f"THIS IS NUMBER: {x}",
+        fill="#d60000",
+        font=("Roboto-Bold", int(15.0)),
+        tag = "predict_text")
+
+def deleteText():
+    canvas.delete("predict_text")
 def clear_frame():
    cv.delete('all')
    draw.rectangle((0, 0, 435, 308), fill="black")
@@ -95,11 +112,12 @@ draw = ImageDraw.Draw(image1)
 cv.bind("<Button-1>", get_x_and_y)
 cv.bind("<B1-Motion>", draw_smth)
 ###
-canvas.create_text(
-    709.0, 424.0,
-    text = "THIS IS NUMBER:",
-    fill = "#d60000",
-    font = ("Roboto-Bold", int(15.0)))
+# createText('')
+# canvas.create_text(
+#     709.0, 424.0,
+#     text = "THIS IS NUMBER:",
+#     fill = "#d60000",
+#     font = ("Roboto-Bold", int(15.0)))
 
 background_img = PhotoImage(file = f"background.png")
 background = canvas.create_image(
