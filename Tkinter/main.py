@@ -3,6 +3,27 @@ from tkinter import *
 from PIL import ImageTk, Image, ImageDraw, ImageGrab
 import PIL
 
+
+def onEnter_btn0(event):
+    global img
+    img = ImageTk.PhotoImage(Image.open(r'img0_hover.png'))
+    b0.config(image=img)
+
+def onEnter_btn1(event):
+    global img11
+    img11 = ImageTk.PhotoImage(Image.open(r'img1_hover.png'))
+    b1.config(image=img11)
+
+def onLeave_btn0(event):
+    global img
+    img = ImageTk.PhotoImage(Image.open(r'img0.png'))
+    b0.config(image=img)
+
+def onLeave_btn1(event):
+    global img11
+    img11 = ImageTk.PhotoImage(Image.open(r'img1.png'))
+    b1.config(image=img11)
+
 def predict():
     bbox = image1.getbbox()
     # print(bbox,bbox[3])
@@ -90,6 +111,11 @@ b1.place(
     width = 200,
     height = 50)
 
+b0.bind('<Enter>',  onEnter_btn0)
+b0.bind('<Leave>',  onLeave_btn0)
+
+b1.bind('<Enter>',  onEnter_btn1)
+b1.bind('<Leave>',  onLeave_btn1)
 
 # canvas.create_rectangle(
 #     483, 22, 483+435, 22+308,
