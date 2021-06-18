@@ -24,6 +24,24 @@ def onLeave_btn1(event):
     img11 = ImageTk.PhotoImage(Image.open(r'img1.png'))
     b1.config(image=img11)
 
+def center(image):
+
+    image = image.convert('RGBA')
+    image = image.resize((20, 20), PIL.Image.ANTIALIAS)
+
+    raw_image = PIL.Image.open(r"raw_image.png")
+    raw_image = raw_image.convert('RGBA')
+
+    x1 = int(.5 * raw_image.size[0]) - int(.5 * image.size[0])
+    y1 = int(.5 * raw_image.size[1]) - int(.5 * image.size[1])
+    x2 = int(.5 * raw_image.size[0]) + int(.5 * image.size[0])
+    y2 = int(.5 * raw_image.size[1]) + int(.5 * image.size[1])
+
+    print(x1,y1,x2,y2)
+    print(raw_image.size)
+    raw_image.paste(image, box=(x1, y1, x2, y2), mask=image)
+
+    raw_image.convert(raw_image.mode).save("image_for_predict.png")
 def predict():
     bbox = image1.getbbox()
     # print(bbox,bbox[3])
@@ -33,9 +51,11 @@ def predict():
     cropped.save(filename)
 
     image = PIL.Image.open("image.png")
-    image = image.resize((16, 16), PIL.Image.ANTIALIAS)
+
+    center(image)
+    # image = image.resize((28, 28), PIL.Image.ANTIALIAS)
     # image = PIL.ImageTk.PhotoImage(image)
-    image.save('image_for_predict.png')
+    # image.save('image_for_predict.png')
 
     # Step 2. Load image,model,predict
     x = random.randint(0,10)
