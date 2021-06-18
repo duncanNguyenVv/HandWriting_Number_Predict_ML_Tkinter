@@ -29,8 +29,7 @@ def center(image):
     image = image.convert('RGBA')
     image = image.resize((20, 20), PIL.Image.ANTIALIAS)
 
-    raw_image = PIL.Image.open(r"raw_image.png")
-    raw_image = raw_image.convert('RGBA')
+    raw_image = PIL.Image.new("RGBA", (28, 28), (0, 0, 0))
 
     x1 = int(.5 * raw_image.size[0]) - int(.5 * image.size[0])
     y1 = int(.5 * raw_image.size[1]) - int(.5 * image.size[1])
