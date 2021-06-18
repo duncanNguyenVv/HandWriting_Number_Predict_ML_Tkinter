@@ -12,7 +12,9 @@ Course: Thống Kê Máy Tính Và Ứng Dụng
 
 ## How to use
 
+```
 cd /Tkinter
+```
 
 ```python
 python main.py
