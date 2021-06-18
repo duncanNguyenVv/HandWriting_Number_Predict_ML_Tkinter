@@ -2,13 +2,15 @@
  
 Develope by HCMUS Students
 
-UI: 18120184 - Nguyen Nguyen Khang @Al3927
-
-Model:
-
 For a Lab Course
 
 Course: Thống Kê Máy Tính Và Ứng Dụng
+
+## Team
+
+UI: 18120184 - Nguyen Nguyen Khang @Al3927
+
+Model:
 
 ## How to use
 
