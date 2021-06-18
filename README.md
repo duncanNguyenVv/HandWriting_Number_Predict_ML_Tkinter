@@ -15,7 +15,10 @@ Model:
 ## How to use
 
 ```
-cd /Tkinter
+git clone https://github.com/Al3927/HandWriting_Number_Predict_ML_Tkinter
+```
+```
+cd Tkinter
 ```
 
 ```python
