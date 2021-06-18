@@ -1,6 +1,6 @@
 # HandWriting_Number_Predict_ML_Tkinter
  
-Develope by HCMUS Students
+Developed by HCMUS Students
 
 For a Lab Course
 
