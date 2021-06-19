@@ -2,7 +2,9 @@ import random
 from tkinter import *
 from PIL import ImageTk, Image, ImageDraw, ImageGrab
 import PIL
-
+import numpy as np
+import pickle
+import HOG_and_Sobel
 
 def onEnter_btn0(event):
     global img
@@ -43,7 +45,6 @@ def center(image):
     raw_image.convert(raw_image.mode).save("image_for_predict.png")
 def predict():
     bbox = image1.getbbox()
-    # print(bbox,bbox[3])
     cropped = image1.crop(bbox)
     filename = "image.png"
 
@@ -52,12 +53,20 @@ def predict():
     image = PIL.Image.open("image.png")
 
     center(image)
-    # image = image.resize((28, 28), PIL.Image.ANTIALIAS)
-    # image = PIL.ImageTk.PhotoImage(image)
-    # image.save('image_for_predict.png')
 
     # Step 2. Load image,model,predict
-    x = random.randint(0,10)
+    image_predict = PIL.Image.open('image_for_predict.png').convert("L")
+    data = np.asarray(image_predict)
+    data = data.flatten()
+    print(data.shape)
+    ## predict loi thi umcomment dong duoi dien shape vo nhe
+    # data = np.reshape(data, (1,784))
+    pkl_filename = "pickle_model.pkl"
+    with open(pkl_filename, 'rb') as file:
+        pickle_model = pickle.load(file)
+
+    x = pickle_model.predict(data)[0]
+    # x = random.randint(0,10)
     # Step 3. Print
     deleteText()
     createText(x)
